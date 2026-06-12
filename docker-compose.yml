@@ -1,0 +1,13 @@
+services:
+  jellyfin-signup:
+    build: .
+    container_name: jellyfin-signup
+    restart: unless-stopped
+    ports:
+      - "${SIGNUP_PORT:-8060}:8060"
+    env_file:
+      - .env
+    volumes:
+      # Read-only access to Jellyfin database is used to discover an existing API key.
+      # Prefer a purpose-made limited API key if you adapt the code for a different auth flow.
+      - ${JELLYFIN_DB_PATH:-./jellyfin.db}:/jellyfin-data/jellyfin.db:ro
