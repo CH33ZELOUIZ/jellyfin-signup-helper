@@ -2,13 +2,21 @@
 
 This dated backlog is generated from git history for the `jellyfin-signup-helper` public template repo.
 Use it to review what changed over time directly from GitHub.
+The newest entry is labeled `HEAD` because this generated file lives inside the same commit it describes.
 
 ## 2026-06-17
 
-### `3f9bbc9` — Update CH33ZE template documentation
+### `HEAD` — Update CH33ZE template documentation
 - Author: `CH33ZE`
-- Diff: `1 file changed, 30 insertions(+)`
-- Change counts: `files=1, insertions=30, deletions=0`
+- Diff: `1 file changed, 4 insertions(+), 3 deletions(-)`
+- Change counts: `files=1, insertions=4, deletions=3`
+- Changed paths:
+  - `M	CHANGELOG.md`
+
+### `0bc59bb` — Update CH33ZE template documentation
+- Author: `CH33ZE`
+- Diff: `1 file changed, 39 insertions(+)`
+- Change counts: `files=1, insertions=39, deletions=0`
 - Changed paths:
   - `A	CHANGELOG.md`
 
