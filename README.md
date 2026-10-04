@@ -1,23 +1,16 @@
 # Jellyfin Signup Helper
 
-A tiny self-hosted signup page for creating Jellyfin users, plus an optional helper that applies default home/library display preferences.
+I made this so I could let trusted people create their own Jellyfin account without giving them admin access or doing every account by hand.
 
-## What it does
+It is a small self-hosted signup page. It creates a normal Jellyfin user, applies safe default policy settings, and can optionally run `apply-defaults.py` to set up the home screen and library order the way I like it.
 
-- Serves a simple HTML signup form.
-- Validates username/password input.
-- Uses the Jellyfin API to create a non-admin user.
-- Applies conservative default user policy settings.
-- Optionally runs `apply-defaults.py` after account creation to normalize home sections and library order.
-- Provides `/health` for uptime checks.
+## Security notes
 
-## Important security notes
+Treat this like an admin helper, not a public signup service.
 
-This is an admin-adjacent helper. Deploy carefully.
-
-- Put it behind trusted-network access, invite-only routing, or a real auth/rate-limit layer.
-- Do not expose unrestricted public signup unless you actually want strangers creating accounts.
-- The included default token discovery reads an existing Jellyfin API key from the Jellyfin SQLite DB. That is convenient for private homelabs, but a purpose-made API key or service account flow is cleaner for broader deployments.
+- Put it behind trusted-network access, invite-only routing, or proper auth/rate limiting.
+- Do not expose it to the open internet unless you really want anyone to create accounts.
+- The default token discovery reads an existing Jellyfin API key from the Jellyfin SQLite DB. That is handy for a private homelab, but a dedicated API key or service account is cleaner for anything broader.
 - Never publish your Jellyfin database or `.env` file.
 
 ## Quick start
@@ -38,7 +31,7 @@ Open <http://localhost:8060>.
 | --- | --- |
 | `SIGNUP_PORT` | Host port for the signup page. |
 | `JELLYFIN_URL` | Internal URL reachable from the signup container. |
-| `PUBLIC_JELLYFIN_URL` | URL shown to users after signup. |
+| `PUBLIC_JELLYFIN_URL` | URL shown after signup. |
 | `JELLYFIN_DB_PATH` | Host path to Jellyfin's SQLite DB, mounted read-only. |
 | `JELLYFIN_DB` | Container path to the mounted DB. |
 | `APPLY_DEFAULTS` | Optional script path run after user creation. |
